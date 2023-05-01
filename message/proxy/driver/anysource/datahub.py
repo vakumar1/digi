@@ -73,15 +73,4 @@ def emit_digi_data_forever(datahub_endpoint, datahub_group):
             digi.logger.info("Failed to write dspace data to Datahub: ")
             digi.logger.info(e)
 
-        # v1 = client.CoreV1Api()
-        # ret = v1.list_service_for_all_namespaces()
-        # for item in ret.items:
-        #     if item.metadata.namespace == "default" and item.metadata.name not in ["kubernetes", "lake", "proxy"]:
-        #         data = {
-        #             "kind": str(item.kind),
-        #             "name": str(item.metadata.name),
-        #             "creation": str(item.metadata.creation_timestamp),
-        #             "deletion": str(item.metadata.deletion_timestamp),
-        #         }
-        #         emit_metadata_event(emitter, datahub_group, item.metadata.name, data)
         time.sleep(10)

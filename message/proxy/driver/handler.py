@@ -25,10 +25,6 @@ def register_proxy(meta):
     user_name = meta.get("user_name")
     dspace_name = meta.get("dspace_name")
 
-    # TODO: remove modifications (only for debugging)
-    registry_endpoint = "http://dspace.anysource.io:30201/registry/registerDspace"
-    user_name = "vakumar"
-    dspace_name = "anysource_ds"
     registry.register_dspace(registry_endpoint, user_name, dspace_name)
 
 if __name__ == '__main__':
