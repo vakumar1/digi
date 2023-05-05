@@ -6,9 +6,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-    metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-    "k8s.io/apimachinery/pkg/runtime/schema"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
+	"k8s.io/apimachinery/pkg/runtime/schema"
 
 	"digi.dev/digi/api"
 	"digi.dev/digi/api/k8s"
@@ -156,9 +156,8 @@ var registerCmd = &cobra.Command{
 	Args:    cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		// run a local proxy
-		_ = helper.RunMake(map[string]string{
-		}, "register-space", true, false)
-		
+		_ = helper.RunMake(map[string]string{}, "register-space", true, false)
+
 		// Get current context
 		kc, err := k8s.LoadKubeConfig()
 		if err != nil {
