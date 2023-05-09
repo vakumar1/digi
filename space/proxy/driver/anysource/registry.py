@@ -9,11 +9,13 @@ import threading
 def register_dspace(registry_endpoint, user_name, dspace_name):
     kube_client = client.CoreV1Api()
 
-    proxy_service = kube_client.read_namespaced_service(digi.name, "default")
-    proxy_endpoint = proxy_service.spec.cluster_ip
+    # proxy_service = kube_client.read_namespaced_service(digi.name, "default")
+    # proxy_endpoint = proxy_service.spec.cluster_ip
 
-    # TODO: use external endpoint
+    # # TODO: use external endpoint
+    proxy_endpoint = "http://ucb-dspace.digi.dev:30005"
     # external_endpoints = proxy_service.spec.external_i_ps
+    # digi.logger.info(f"External endpoints: {external_endpoints}")
     digi.logger.info(f"Registering {user_name}/{dspace_name} at {registry_endpoint}.")
     res = requests.put(registry_endpoint, 
         headers={
