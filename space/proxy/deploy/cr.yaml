@@ -1,4 +1,4 @@
-apiVersion: message.digi.dev/v1
+apiVersion: space.digi.dev/v1
 kind: Proxy
 metadata:
   name: {{ .Values.name }}
