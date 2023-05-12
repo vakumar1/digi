@@ -3,11 +3,11 @@ package space
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"log"
-	"os"
 	"net/http"
 	"net/url"
-	"io/ioutil"
+	"os"
 
 	"github.com/spf13/cobra"
 
@@ -249,11 +249,10 @@ var queryCmd = &cobra.Command{
 		if resp.StatusCode != 200 {
 			log.Fatal("Request to sourcer failed with code", resp.StatusCode, "\n", string(body))
 		}
-		
+
 		// print query results to stdout
 		fmt.Println(string(body))
 	},
-
 }
 
 var searchCmd = &cobra.Command{
@@ -289,11 +288,10 @@ var searchCmd = &cobra.Command{
 		if resp.StatusCode != 200 {
 			log.Fatal("Request to sourcer failed with code", resp.StatusCode, "\n", string(body))
 		}
-		
+
 		// print query results to stdout
 		fmt.Println(string(body))
 	},
-
 }
 
 var listCmd = &cobra.Command{
