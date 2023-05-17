@@ -16,9 +16,9 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
 	"digi.dev/digi/api"
+	"digi.dev/digi/api/config"
 	"digi.dev/digi/api/k8s"
 	"digi.dev/digi/cmd/digi/helper"
-	"digi.dev/digi/api/config"
 	"digi.dev/digi/space"
 )
 
@@ -166,7 +166,7 @@ var registerCmd = &cobra.Command{
 		if len(args) > 1 {
 			anysource = args[1]
 		} else {
-		  config_ret, err := config.Get("ANYSOURCE_ENDPOINT")
+			config_ret, err := config.Get("ANYSOURCE_ENDPOINT")
 			if err != nil {
 				log.Fatal("Provide a registry endpoint or set an anysource endpoint in the digi config\n")
 			}
@@ -217,7 +217,7 @@ var registerCmd = &cobra.Command{
 		if err != nil {
 			log.Fatal("Proxy digi is not currently running\n", err.Error())
 		}
-		
+
 		registryURL := fmt.Sprintf("http://%s:30201/registry/registerDspace", anysource)
 		proxyURL := fmt.Sprintf("http://%s:30005/proxy", proxy)
 		unstructured.SetNestedField(cr.Object, dspace, "spec", "meta", "dspace_name")

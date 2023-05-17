@@ -107,6 +107,7 @@ func init() {
 	RootCmd.AddCommand(space.RootCmd)
 	RootCmd.AddCommand(lake.RootCmd)
 	RootCmd.AddCommand(lake.QueryCmd)
+	lake.QueryCmd.Flags().BoolP("remote", "r", false, "Query remote dspace through anysource")
 
 	RootCmd.AddCommand(box.RootCmd)
 
