@@ -171,9 +171,7 @@ var registerCmd = &cobra.Command{
 				log.Fatal("Provide a registry endpoint or set an anysource endpoint in the digi config\n")
 			}
 			anysource = config_ret
-			log.Println(config_ret, anysource)
 		}
-		log.Println(anysource)
 		proxy := ""
 		if len(args) > 2 {
 			proxy = args[2]
