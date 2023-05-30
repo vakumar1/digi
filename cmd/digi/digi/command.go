@@ -20,8 +20,8 @@ func init() {
 	RootCmd.AddCommand(configCmd)
 	configCmd.Flags().StringP("repo", "r", "", "Digi kind repository")
 	configCmd.Flags().StringP("driver-repo", "d", "", "Driver container repository")
-	configCmd.Flags().StringP("anysource-endpoint", "a", "", "IP endpoint for anysource")
-	configCmd.Flags().StringP("proxy-endpoint", "p", "", "IP endpoint for (local) proxy")
+	configCmd.Flags().StringP("anysource-address", "a", "", "IP address for anysource")
+	configCmd.Flags().StringP("proxy-address", "p", "", "IP address for (local) proxy")
 	configCmd.Flags().BoolP("clear", "c", false, "Clear configurations")
 
 	RootCmd.AddCommand(initCmd)

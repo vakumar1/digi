@@ -18,7 +18,7 @@ import (
 
 var (
 	QueryCmd = &cobra.Command{
-		Use:     "query [OPTIONS] [NAME(local)] USER_NAME/DSPACE/DIGI(remote) [QUERY] [EGRESS(remote)] [SOURCER_ENDPOINT(remote)]",
+		Use:     "query [OPTIONS] [NAME(local)] USER_NAME/DSPACE/DIGI(remote) [QUERY] [EGRESS(remote)] [SOURCER_ADDRESS(remote)]",
 		Short:   "Query a digi or the digi lake",
 		Aliases: []string{"q"},
 		Args:    cobra.MinimumNArgs(1),
@@ -38,9 +38,9 @@ var (
 				if len(args) > 3 {
 					anysource = args[3]
 				} else {
-					config_ret, err := config.Get("ANYSOURCE_ENDPOINT")
+					config_ret, err := config.Get("ANYSOURCE_ADDRESS")
 					if err != nil {
-						log.Fatal("Provide a sourcer endpoint or set an anysource endpoint in the digi config\n")
+						log.Fatal("Provide a sourcer address or set an anysource address in the digi config\n")
 					}
 					anysource = config_ret
 				}
@@ -58,7 +58,7 @@ var (
 				uStr := fmt.Sprintf("%v", u)
 				resp, err := http.Get(uStr)
 				if err != nil {
-					log.Fatal("Failed to access sourcer at endpoint: \n", uStr, "\n", err.Error())
+					log.Fatal("Failed to access sourcer at address: \n", uStr, "\n", err.Error())
 				}
 
 				defer resp.Body.Close()
